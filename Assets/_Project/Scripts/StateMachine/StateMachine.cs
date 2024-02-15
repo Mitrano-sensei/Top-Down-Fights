@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace FiniteStateMachine
 {
@@ -8,6 +9,8 @@ namespace FiniteStateMachine
         StateNode _current;
         Dictionary<Type, StateNode> _nodes = new();
         HashSet<ITransition> _anyTransitions = new();
+
+        public UnityAction<IState> OnStateChanged = delegate { };
 
         public void Update()
         {
@@ -27,6 +30,8 @@ namespace FiniteStateMachine
         {
             _current = _nodes[state.GetType()];
             _current.State?.OnEnter();
+
+            OnStateChanged?.Invoke(_current.State);
         }
 
         void ChangeState(IState state)
@@ -39,6 +44,8 @@ namespace FiniteStateMachine
             previousState?.OnExit();
             nextState?.OnEnter();
             _current = _nodes[state.GetType()];
+            
+            OnStateChanged?.Invoke(_current.State);
         }
 
         ITransition GetTransition()
