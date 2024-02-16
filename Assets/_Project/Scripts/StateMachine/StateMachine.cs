@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace FiniteStateMachine
@@ -7,10 +8,15 @@ namespace FiniteStateMachine
     public class StateMachine
     {
         StateNode _current;
-        Dictionary<Type, StateNode> _nodes = new();
+        Dictionary<string, StateNode> _nodes = new();
         HashSet<ITransition> _anyTransitions = new();
 
         public UnityAction<IState> OnStateChanged = delegate { };
+        public UnityAction<float> OnUpdateAction = delegate { };
+        public UnityAction<float> OnFixedUpdateAction = delegate { };
+
+        [SerializeField] private bool _isDebug = false;
+        public bool IsDebug => _isDebug;
 
         public void Update()
         {
@@ -19,16 +25,18 @@ namespace FiniteStateMachine
                 ChangeState(transition.To);
 
             _current.State?.Update();
+            OnUpdateAction?.Invoke(Time.deltaTime);
         }
 
         public void FixedUpdate()
         {
             _current.State?.FixedUpdate();
+            OnFixedUpdateAction?.Invoke(Time.fixedDeltaTime);
         }
 
         public void SetState(IState state)
         {
-            _current = _nodes[state.GetType()];
+            _current = _nodes[state.Name];
             _current.State?.OnEnter();
 
             OnStateChanged?.Invoke(_current.State);
@@ -39,11 +47,11 @@ namespace FiniteStateMachine
             if (state == _current.State) return;
 
             var previousState = _current.State;
-            var nextState = _nodes[state.GetType()].State;
+            var nextState = _nodes[state.Name].State;
 
             previousState?.OnExit();
             nextState?.OnEnter();
-            _current = _nodes[state.GetType()];
+            _current = _nodes[state.Name];
             
             OnStateChanged?.Invoke(_current.State);
         }
@@ -73,12 +81,15 @@ namespace FiniteStateMachine
 
         StateNode GetOrAddNode(IState state)
         {
-            var node = _nodes.GetValueOrDefault(state.GetType());
+            // Dump info
+            if (_isDebug) Debug.Log($"State: {state.Name}, Type : {state.GetType()}");
+
+            var node = _nodes.GetValueOrDefault(state.Name);
 
             if (node == null)
             {
                 node = new StateNode(state);
-                _nodes[state.GetType()] = node;
+                _nodes[state.Name] = node;
             }
 
             return node;

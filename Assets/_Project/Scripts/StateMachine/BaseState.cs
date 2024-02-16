@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FiniteStateMachine
 {
+    [Serializable]
     public abstract class BaseState : IState
     {
 
-        
+        public virtual string Name { get; protected set; }
+
         /**
          * Has to be called with the Update method of a StateMachine
          */

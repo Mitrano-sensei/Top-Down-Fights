@@ -1,17 +1,16 @@
 ﻿using DG.Tweening;
+using System;
 using UnityEngine;
 
 namespace Squares
 {
+    [Serializable]
     public class GreenState : SquareState
     {
-        private Vector3 _baseScale;
-        private Sequence _sequence;
 
-        public GreenState(Transform transform) : base(transform)
-        {
-            _baseScale = transform.localScale;
-        }
+        public GreenState(Transform transform) : base(transform){}
+
+        public GreenState(){}
 
         public override void OnEnter()
         {

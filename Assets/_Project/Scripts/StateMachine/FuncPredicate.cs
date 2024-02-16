@@ -1,4 +1,7 @@
-﻿namespace FiniteStateMachine
+﻿using System;
+using UnityEngine;
+
+namespace FiniteStateMachine
 {
     /**
      * Predicate held by a function.
@@ -10,6 +13,11 @@
         public FuncPredicate(System.Func<bool> func)
         {
             _func = func;
+        }
+
+        public FuncPredicate()
+        {
+
         }
 
         public bool Evaluate() => _func();

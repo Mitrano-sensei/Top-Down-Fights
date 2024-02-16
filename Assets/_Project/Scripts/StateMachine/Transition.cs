@@ -1,5 +1,8 @@
-﻿namespace FiniteStateMachine
+﻿using System;
+
+namespace FiniteStateMachine
 {
+    [Serializable]
     public class Transition : ITransition
     {
         public IState To { get; }
