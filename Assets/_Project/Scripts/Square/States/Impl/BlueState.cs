@@ -27,11 +27,5 @@ namespace Squares
             _sequence.SetLoops(-1, LoopType.Yoyo);
         }
 
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            _sequence.Kill();
-        }
     }
 }

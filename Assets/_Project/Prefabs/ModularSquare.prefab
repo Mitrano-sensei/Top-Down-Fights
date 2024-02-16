@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3147389576681965075}
   - component: {fileID: 4334061630156492873}
+  - component: {fileID: 3883439038311255101}
+  - component: {fileID: 1499911404178348700}
   - component: {fileID: 2392068109263166530}
   m_Layer: 0
   m_Name: ModularSquare
@@ -85,6 +87,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3883439038311255101
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3844854881924175670}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1499911404178348700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3844854881924175670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a1af3c088e92e448e8bd6a59599608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2392068109263166530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,52 +165,44 @@ MonoBehaviour:
   _stateDefinitions:
   - SquareState:
       rid: 5285003110929137669
-    EndCondition:
-      rid: 5285003110929137677
+    Until:
+      rid: -2
   - SquareState:
       rid: 5285003110929137673
-    EndCondition:
-      rid: 5285003110929137678
+    Until:
+      rid: -2
   - SquareState:
       rid: 5285003110929137675
-    EndCondition:
-      rid: 5285003110929137682
+    Until:
+      rid: -2
   - SquareState:
       rid: 5285003110929137686
-    EndCondition:
-      rid: 5285003110929137685
+    Until:
+      rid: -2
+  _anyTransitionDefinition: []
+  _isDebug: 0
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 5285003110929137669
       type: {class: BlueState, ns: Squares, asm: Assembly-CSharp}
       data:
         _name: Blue
+        _isDebug: 0
     - rid: 5285003110929137673
       type: {class: RedState, ns: Squares, asm: Assembly-CSharp}
       data:
         _name: Red 1
+        _isDebug: 0
     - rid: 5285003110929137675
       type: {class: GreenState, ns: Squares, asm: Assembly-CSharp}
       data:
         _name: Green
-    - rid: 5285003110929137677
-      type: {class: CountDownTransitionDefinition, ns: Square, asm: Assembly-CSharp}
-      data:
-        _duration: 2
-    - rid: 5285003110929137678
-      type: {class: CountDownTransitionDefinition, ns: Square, asm: Assembly-CSharp}
-      data:
-        _duration: 3
-    - rid: 5285003110929137682
-      type: {class: CountDownTransitionDefinition, ns: Square, asm: Assembly-CSharp}
-      data:
-        _duration: 4
-    - rid: 5285003110929137685
-      type: {class: CountDownTransitionDefinition, ns: Square, asm: Assembly-CSharp}
-      data:
-        _duration: 2
+        _isDebug: 0
     - rid: 5285003110929137686
       type: {class: RedState, ns: Squares, asm: Assembly-CSharp}
       data:
         _name: Red 2
+        _isDebug: 0

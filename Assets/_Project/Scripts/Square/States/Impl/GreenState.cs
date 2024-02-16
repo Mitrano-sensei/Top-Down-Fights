@@ -28,12 +28,5 @@ namespace Squares
             _sequence.Append(_transform.DOScale(1.6f * _baseScale, 0.5f).SetEase(Ease.InOutBounce));
             _sequence.SetLoops(-1, LoopType.Yoyo);
         }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            _sequence.Kill();
-        }
     }
 }

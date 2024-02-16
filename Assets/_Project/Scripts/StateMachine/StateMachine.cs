@@ -16,7 +16,7 @@ namespace FiniteStateMachine
         public UnityAction<float> OnFixedUpdateAction = delegate { };
 
         [SerializeField] private bool _isDebug = false;
-        public bool IsDebug => _isDebug;
+        public bool IsDebug { get => _isDebug; set => _isDebug = value; }
 
         public void Update()
         {

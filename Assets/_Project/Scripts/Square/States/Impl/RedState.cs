@@ -10,6 +10,8 @@ namespace Squares
     public class RedState : SquareState
     {
         public RedState(Transform transform) : base(transform){}
+        public RedState() { }
+
 
         public override void OnEnter()
         {
@@ -27,14 +29,6 @@ namespace Squares
             _sequence.Append(_transform.DOScale(1f * _baseScale, 0.5f).SetEase(Ease.InOutBounce));
             _sequence.SetLoops(-1, LoopType.Yoyo);
         }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            _sequence.Kill();
-        }
-
 
     }
 }

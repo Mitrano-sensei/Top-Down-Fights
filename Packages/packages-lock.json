@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "97c4e632bcec3370161e192537be9c0c25fe611d"
     },
+    "com.madsbangh.easybuttons": {
+      "version": "https://github.com/madsbangh/EasyButtons.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73d2383899210da808a1b27329cdaa8000de557b"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,

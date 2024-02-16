@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using EasyButtons;
 using FiniteStateMachine;
 using System;
 using UnityEditor;
@@ -9,6 +10,8 @@ namespace Squares
     [Serializable]
     public abstract class SquareState : BaseState
     {
+        [Header("Base Square State Info")]
+
         [SerializeField] private string _name = "";
 
         public Action OnEnterAction = delegate { };
@@ -51,7 +54,10 @@ namespace Squares
         public override void OnEnter()
         {
             base.OnEnter();
-            if (_isDebug) Debug.Log("Entering " + GetType().Name + " named " + _name);
+            if (_isDebug)
+            {
+                Debug.Log("Entering " + GetType().Name + " named " + _name);
+            }
             OnEnterAction?.Invoke();
         }
 
@@ -60,6 +66,8 @@ namespace Squares
             base.OnExit();
             if (_isDebug) Debug.Log("Exiting " + GetType().Name);
             OnExitAction?.Invoke();
+
+            _sequence.Kill();
         }
 
     }
