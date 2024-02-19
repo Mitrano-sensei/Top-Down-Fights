@@ -1,11 +1,9 @@
 using EasyButtons;
 using FiniteStateMachine;
-using KBCore.Refs;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-namespace Square
+namespace Squares
 {
     public class ModularSquareController : MonoBehaviour
     {
@@ -96,8 +94,11 @@ namespace Square
         private void Init(SquareStateUntilDefinition current)
         {
             var state = current.SquareState;
-            state.SetTransform(transform);
+            state.SetGameObject(gameObject);
             state.GenerateName();
+
+            var transition = current.Until;
+            transition.SetGameObject(gameObject);
         }
 
         [Button]

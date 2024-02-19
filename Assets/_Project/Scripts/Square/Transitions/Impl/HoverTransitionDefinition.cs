@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using Utilities;
 
-namespace Square
+namespace Squares
 {
     [Serializable]
     public class  HoverTransitionDefinition : TransitionDefinition

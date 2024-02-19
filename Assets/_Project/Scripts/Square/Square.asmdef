@@ -1,0 +1,21 @@
+{
+    "name": "Squares",
+    "rootNamespace": "Squares",
+    "references": [
+        "GUID:f8aa12b930f68444c80a59be3afd5bcc",
+        "GUID:37ba34f99fd2a3d409abaf8e538366c9",
+        "GUID:33759803a11f4d538227861a78aba30b",
+        "GUID:f24cf67903b27ae498b3069ecc30cc11",
+        "GUID:49b49c76ee64f6b41bf28ef951cb0e50",
+        "GUID:60f87fe20ae12354eb19667dabef8a42"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

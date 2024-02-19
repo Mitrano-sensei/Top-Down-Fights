@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Square
+namespace Squares
 {
     [Serializable]
     public class MultiTransitionDefinition : TransitionDefinition

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Utilities;
 
-namespace Square
+namespace Squares
 {
     [Serializable]
     public class CountDownTransitionDefinition : TransitionDefinition

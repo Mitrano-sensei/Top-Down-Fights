@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Square
+namespace Squares
 {
     [Serializable]
     public class SquareStateUntilDefinition

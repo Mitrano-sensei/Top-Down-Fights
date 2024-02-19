@@ -18,22 +18,24 @@ namespace Squares
 
         public Color Color => _color;
 
-        public CustomizableColorState(Transform transform) : base(transform) { }
+        public CustomizableColorState(GameObject gameObject) : base(gameObject) { }
         public CustomizableColorState() { }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            _transform.DOScale(_baseScaleFactor * _baseScale, _firstScaleDuration).SetEase(_firstScaleEase);
+            var transform = _gameObject.transform;
+
+            transform.DOScale(_baseScaleFactor * _baseScale, _firstScaleDuration).SetEase(_firstScaleEase);
             _sequence = DOTween.Sequence();
 
-            var renderer = _transform.GetComponent<SpriteRenderer>();
+            var renderer = transform.GetComponent<SpriteRenderer>();
 
             // Tween color
             renderer.DOColor(_color, 0.5f).SetEase(Ease.Linear);
 
             // Tween scale
-            _sequence.Append(_transform.DOScale(_finalScaleFactor * _baseScale, _secondScaleDuration).SetEase(_secondScaleEase));
+            _sequence.Append(transform.DOScale(_finalScaleFactor * _baseScale, _secondScaleDuration).SetEase(_secondScaleEase));
             _sequence.SetLoops(-1, LoopType.Yoyo);
         }
 

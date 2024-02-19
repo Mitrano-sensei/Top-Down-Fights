@@ -1,7 +1,7 @@
 ﻿using FiniteStateMachine;
 using System;
 
-namespace Square
+namespace Squares
 {
     [Serializable]
     public class NeverTransitionDefinition : TransitionDefinition

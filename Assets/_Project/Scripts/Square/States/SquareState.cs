@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using EasyButtons;
 using FiniteStateMachine;
+using log4net.Util;
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Squares
         public Action OnExitAction = delegate { };
         public override string Name { get => _name; protected set => _name = value; }
 
-        protected Transform _transform;
+        protected GameObject _gameObject;
 
         protected Vector3 _baseScale;
         protected Sequence _sequence;
@@ -28,10 +29,10 @@ namespace Squares
         [SerializeField] private bool _isDebug = false;
         public bool IsDebug => _isDebug;
 
-        public SquareState(Transform transform)
+        public SquareState(GameObject gameObject)
         {
             GenerateName();
-            SetTransform(transform);
+            SetGameObject(gameObject);
         }
 
         public SquareState()
@@ -45,10 +46,10 @@ namespace Squares
                 _name = GetType().Name + GlobalId++;
         }
 
-        public virtual void SetTransform(Transform transform)
+        public virtual void SetGameObject(GameObject gameObject)
         {
-            _transform = transform;
-            _baseScale = transform.localScale;
+            _gameObject = gameObject;
+            _baseScale = _gameObject.transform.localScale;
         }
 
         public override void OnEnter()

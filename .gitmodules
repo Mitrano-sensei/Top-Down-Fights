@@ -1,0 +1,3 @@
+[submodule "Packages/Utilities"]
+	path = Packages/Utilities
+	url = https://github.com/Mitrano-sensei/Unity-Utilities.git

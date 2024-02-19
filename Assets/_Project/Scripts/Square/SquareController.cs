@@ -18,9 +18,9 @@ namespace Squares
             _stateMachine = new StateMachine();
 
             // Declare states
-            var redState = new RedState(transform);
-            var blueState = new BlueState(transform);
-            var greenState = new GreenState(transform);
+            var redState = new RedState(gameObject);
+            var blueState = new BlueState(gameObject);
+            var greenState = new GreenState(gameObject);
 
             // Declare Timers
             var greenTimer = new CountdownTimer(3f);

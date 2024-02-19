@@ -16,7 +16,7 @@ namespace MyTools
         [MenuItem("Tools/Setup/Create Default Folders")]
         public static void CreateDefaultFolders()
         {
-            Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI");
+            Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI", "Scenes", "Sounds");
             Refresh();
         }
 
@@ -26,6 +26,24 @@ namespace MyTools
             Assets.ImportAsset(
                 "DOTween HOTween v2.unitypackage",
                 "Demigiant/Editor ExtensionsAnimation"
+                );
+        }
+
+        [MenuItem("Tools/Setup/Import My Utilities Asset")]
+        public static void ImportMyUtilitiesAsset()
+        {
+            Assets.ImportAsset(
+               "MyUtilities.unitypackage",
+               "Mitrano/MyTools"
+               );
+        }
+
+        [MenuItem("Tools/Setup/Import Finite State Machine Asset")]
+        public static void ImportFiniteStateMachineAsset()
+        {
+            Assets.ImportAsset(
+                "Finite State Machine.unitypackage",
+                "Mitrano/MyTools"
                 );
         }
 
@@ -51,6 +69,8 @@ namespace MyTools
         {
             Packages.InstallPackages(new[] {
                 "git+https://github.com/KyleBanks/scene-ref-attribute",
+                "git+https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git",
+                "git+https://github.com/madsbangh/EasyButtons.git"
                 // "git+https://github.com/starikcetin/Eflatun.SceneReference.git#3.1.1" // No longer maintained, should be used with caution
             });
         }
