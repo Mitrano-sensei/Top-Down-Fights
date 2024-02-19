@@ -29,24 +29,6 @@ namespace MyTools
                 );
         }
 
-        [MenuItem("Tools/Setup/Import My Utilities Asset")]
-        public static void ImportMyUtilitiesAsset()
-        {
-            Assets.ImportAsset(
-               "MyUtilities.unitypackage",
-               "Mitrano/MyTools"
-               );
-        }
-
-        [MenuItem("Tools/Setup/Import Finite State Machine Asset")]
-        public static void ImportFiniteStateMachineAsset()
-        {
-            Assets.ImportAsset(
-                "Finite State Machine.unitypackage",
-                "Mitrano/MyTools"
-                );
-        }
-
         [MenuItem("Tools/Setup/Install Netcode for GameObjects")]
         public static void InstallNetcodeForGameObjects()
         {
@@ -70,7 +52,10 @@ namespace MyTools
             Packages.InstallPackages(new[] {
                 "git+https://github.com/KyleBanks/scene-ref-attribute",
                 "git+https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git",
-                "git+https://github.com/madsbangh/EasyButtons.git"
+                "git+https://github.com/madsbangh/EasyButtons.git",
+                "git+https://github.com/KyleBanks/scene-ref-attribute.git",
+                "git+https://github.com/Mitrano-sensei/Finite-State-Machine.git",
+                "git+https://github.com/Mitrano-sensei/Unity-Utilities.git"
                 // "git+https://github.com/starikcetin/Eflatun.SceneReference.git#3.1.1" // No longer maintained, should be used with caution
             });
         }
@@ -80,9 +65,9 @@ namespace MyTools
             public static void CreateDefault(string root, params string[] folders)
             {
                 var fullpath = Path.Combine(Application.dataPath, root);
-                if (!Directory.Exists(fullpath))
+                if (!Exists(fullpath))
                 {
-                    Directory.CreateDirectory(fullpath);
+                    CreateDirectory(fullpath);
                 }
                 foreach (var folder in folders)
                 {

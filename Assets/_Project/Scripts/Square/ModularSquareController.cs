@@ -52,6 +52,7 @@ namespace Squares
                     Debug.LogError($"Could not find state with name {anyTransitionDef.To}");
                     continue;
                 }
+                Init(anyTransitionDef.When);
                 To(to.SquareState, anyTransitionDef.When.GetPredicate());
             }
 
@@ -78,6 +79,9 @@ namespace Squares
             _stateMachine.AddTransition(from, to, condition);
         }
 
+        /**
+         * Creates a transition from one state to another, with a specified condition
+         */
         void At(SquareStateUntilDefinition from, SquareStateUntilDefinition to, IPredicate condition)
         {
             At(from.SquareState, to.SquareState, condition);
@@ -91,13 +95,26 @@ namespace Squares
             _stateMachine.AddAnyTransition(to, condition);
         }
 
+        /**
+         * Initialize the state and the transition
+         */
         private void Init(SquareStateUntilDefinition current)
         {
             var state = current.SquareState;
-            state.SetGameObject(gameObject);
-            state.GenerateName();
+            Init(state);
 
             var transition = current.Until;
+            Init(transition);
+        }
+
+        private void Init(SquareState state)
+        {
+            state.SetGameObject(gameObject);
+            state.GenerateName();
+        }
+
+        private void Init(TransitionDefinition transition)
+        {
             transition.SetGameObject(gameObject);
         }
 

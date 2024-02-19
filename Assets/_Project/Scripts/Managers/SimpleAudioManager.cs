@@ -5,8 +5,12 @@ using EasyButtons;
 using UnityEngine;
 using Utilities;
 
+
+/**
+ * A really simple audio manager that plays one shot sounds.
+ */
 [RequireComponent(typeof(AudioSource))]
-public class AudioManager : Singleton<AudioManager>
+public class SimpleAudioManager : Singleton<SimpleAudioManager>
 {
     [SerializeField] private AudioSource _soundsSource;
 
