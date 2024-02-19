@@ -14,6 +14,12 @@
       "dependencies": {},
       "hash": "73d2383899210da808a1b27329cdaa8000de557b"
     },
+    "com.mitrano.statemachine": {
+      "version": "file:StateMachine",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.mitrano.utilities": {
       "version": "file:Utilities",
       "depth": 0,
