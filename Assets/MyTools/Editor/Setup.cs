@@ -13,14 +13,15 @@ namespace MyTools
 {
     public static class Setup
     {
-        [MenuItem("Tools/Setup/Create Default Folders")]
+        #region Folders And Imports 
+        [MenuItem("Tools/Setup/Folders And Imports/Create Default Folders")]
         public static void CreateDefaultFolders()
         {
             Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI", "Scenes", "Sounds");
             Refresh();
         }
 
-        [MenuItem("Tools/Setup/Import My Favorite Assets")]
+        [MenuItem("Tools/Setup/Folders And Imports/Import My Favorite Assets")]
         public static void ImportMyFavoriteAssets()
         {
             Assets.ImportAsset(
@@ -29,7 +30,7 @@ namespace MyTools
                 );
         }
 
-        [MenuItem("Tools/Setup/Install Netcode for GameObjects")]
+        [MenuItem("Tools/Setup/Folders And Imports/Install Netcode for GameObjects")]
         public static void InstallNetcodeForGameObjects()
         {
             Packages.InstallPackages(new[] {
@@ -38,7 +39,7 @@ namespace MyTools
             });
         }
 
-        [MenuItem("Tools/Setup/Install Unity AI Navigation")]
+        [MenuItem("Tools/Setup/Folders And Imports/Install Unity AI Navigation")]
         public static void InstallUnityAINavigation()
         {
             Packages.InstallPackages(new[] {
@@ -46,7 +47,7 @@ namespace MyTools
             });
         }
 
-        [MenuItem("Tools/Setup/Install My Favorite Open Source")]
+        [MenuItem("Tools/Setup/Folders And Imports/Install My Favorite Open Source")]
         public static void InstallOpenSource()
         {
             Packages.InstallPackages(new[] {
@@ -60,6 +61,48 @@ namespace MyTools
             });
         }
 
+        #endregion
+
+        #region Scene
+
+        [MenuItem("Tools/Setup/Scene/Init Scene")]
+        public static void InitScene()
+        {
+            // Verify the number of gameobjects in the scene
+            var gameObjects = Object.FindObjectsOfType<GameObject>();
+            if (gameObjects.Length != 1)
+            {
+                if (gameObjects.Length == 0)
+                {
+                    Debug.Log("Camera not found, creating a new one :)");
+                    Scenes.CreateCamera();
+                }
+                else if (!EditorUtility.DisplayDialog("Are you sure ?", "The Scene is not empty", "Yes", "No"))
+                {
+                    return;
+                }
+            }
+
+            string[] items = new string[] { "Managers", "Setup", "Environment", "Systems" };
+
+            Scenes.CreateSeparator();
+            foreach(var item in items)
+            {
+                var go = new GameObject(item);
+                Scenes.CreateSeparator();
+
+                if (item == "Setup")
+                {
+                    var camera = Camera.main;
+                    camera.transform.SetParent(go.transform);
+                    camera.transform.position = new(0, 0, -10);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Helpers
         static class Folders
         {
             public static void CreateDefault(string root, params string[] folders)
@@ -141,5 +184,23 @@ namespace MyTools
                 ImportPackage(Combine(rootFolder, subfolder, asset), false);
             }
         }
+
+        static class Scenes
+        {
+            public static void CreateSeparator()
+            {
+                new GameObject("--------------------");
+            }
+
+            public static void CreateCamera()
+            {
+                var camera = new GameObject("Main Camera");
+                camera.AddComponent<Camera>();
+                camera.AddComponent<AudioListener>();
+                camera.tag = "MainCamera";
+            }
+        }
+
+        #endregion
     }
 }
