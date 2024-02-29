@@ -100,6 +100,12 @@ namespace MyTools
             }
         }
 
+        [MenuItem("Tools/Setup/Scene/Create Separators")]
+        public static void CreateSeparators()
+        {
+            Scenes.CreateSeparator();
+        }
+
         #endregion
 
         #region Helpers
